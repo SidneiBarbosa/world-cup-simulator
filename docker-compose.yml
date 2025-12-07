@@ -1,0 +1,62 @@
+﻿version: '3.8'
+
+services:
+  # The Database Service
+  db:
+    image: postgres:15-alpine
+    container_name: worldcup-db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=worldcupdb
+    ports:
+      - "5432:5432" # Allows you to access DB from Windows (DBeaver/PgAdmin)
+    volumes:
+      - db-data:/var/lib/postgresql/data # <--- This saves your data!
+
+  backend:
+    build: ./backend
+    container_name: wc-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - redis
+    environment:
+      # Database Connection
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/worldcupdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+      # THE FIX: Force Postgres Driver
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver 
+      
+      # Redis Connection
+      - SPRING_DATA_REDIS_HOST=redis
+      - SPRING_DATA_REDIS_PORT=6379
+      
+      # Hibernate Settings
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+
+  # (Optional if you are running frontend locally on Windows via 'npm run dev')
+  frontend:
+    build: ./frontend
+    container_name: wc-frontend
+    ports:
+      - "3000:5173"  # Map host 3000 to container 5173
+    volumes:
+      - ./frontend:/app # Enable "Hot Reload" (changes update instantly!)
+      - /app/node_modules
+    depends_on:
+      - backend
+
+  redis:
+    image: redis:alpine
+    container_name: worldcup-redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+volumes:
+  db-data:

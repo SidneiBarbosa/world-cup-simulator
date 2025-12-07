@@ -1,0 +1,12 @@
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\model\SimulationSession.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\model\Team.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\controller\SimulationController.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\model\MatchResult.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\dto\TeamStats.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\config\TeamSeeder.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\dto\SimulationRequest.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\config\RedisConfig.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\WorldCupApplication.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\service\TournamentService.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\dto\GroupStandings.java
+C:\Users\Lenovo\Documents\Projects\structure\world-cup-simulator\backend\src\main\java\com\worldcup\sim\repository\TeamRepository.java
