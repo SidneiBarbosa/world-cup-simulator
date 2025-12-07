@@ -13,7 +13,7 @@ const GroupSimulator = () => {
     const fetchData = async () => {
       try {
         const sessionId = localStorage.getItem('sim_session_id');
-        const res = await axios.get('https://world-cup-simulator-pied.vercel.app/api/sim/groups', {
+        const res = await axios.get('/api/sim/groups', {
             headers: { 'X-Session-ID': sessionId } 
         });
         
@@ -26,7 +26,7 @@ const GroupSimulator = () => {
         setLoading(false);
       } catch (err) {
         console.error("Backend Error:", err);
-        setError("Could not connect to Backend at http://localhost:8080");
+        setError("Could not connect to Backend");
         setLoading(false);
       }
     };
@@ -106,7 +106,7 @@ const GroupSimulator = () => {
     }));
 
     try {
-        const res = await axios.post('https://world-cup-simulator-pied.vercel.app/api/sim/update-groups', payload, {
+        const res = await axios.post('/api/sim/update-groups', payload, {
             headers: { 'X-Session-ID': sessionId }
         });
         setStandings(prevStandings => {

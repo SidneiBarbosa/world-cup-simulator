@@ -48,7 +48,7 @@ useEffect(() => {
       console.log("Starting new session...");
       
       // 1. Get new ID from backend
-      axios.get('https://world-cup-simulator-pied.vercel.app/api/sim/start')
+      axios.get('/api/sim/start')
         .then(response => {
           const newId = response.data.sessionId;
           // 2. Save the ID

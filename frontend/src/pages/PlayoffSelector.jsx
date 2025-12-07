@@ -72,7 +72,7 @@ const PlayoffSelector = () => {
     try {
       // Loop through selections and save to Redis via Backend
       for (const [pathId, winnerIso] of Object.entries(selections)) {
-        await axios.post('https://world-cup-simulator-pied.vercel.app/api/sim/playoffs/resolve', {
+        await axios.post('/api/sim/playoffs/resolve', {
             placeholderIso: pathId,
             winnerIso: winnerIso
         }, {
