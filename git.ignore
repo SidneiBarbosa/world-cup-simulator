@@ -1,0 +1,7 @@
+# Ignore build outputs
+target/
+*.jar
+
+# Ignore JDK files accidentally committed
+oracleJdk-21/
+jdk-21/
