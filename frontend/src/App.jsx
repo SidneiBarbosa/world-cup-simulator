@@ -37,26 +37,43 @@ function Home() {
 
 // 2. Main App Component (Routes & Logic)
 export default function App() {
+
+  const [isSessionInitialized, setIsSessionInitialized] = useState(false);
   
   // Initialize Session on Load
 useEffect(() => {
     let sessionId = localStorage.getItem('sim_session_id');
 
     if (!sessionId) {
-      // Call the backend to get a new ID
-      axios.get('https://world-cup-simulator-iw8s.vercel.app/api/sim/start')
+      console.log("Starting new session...");
+      
+      // 1. Get new ID from backend
+      axios.get('https://[YOUR_BACKEND_DOMAIN_NAME]/api/sim/start')
         .then(response => {
           const newId = response.data.sessionId;
+          // 2. Save the ID
           localStorage.setItem('sim_session_id', newId);
-          console.log("New session started:", newId);
+          console.log("New session ID saved:", newId);
         })
-        .catch(error => {
-          console.error("Failed to start session:", error);
+        .finally(() => {
+          // 3. Set the state to true *after* the API call finishes (success or fail)
+          setIsSessionInitialized(true); 
         });
     } else {
-      console.log("Existing session ID found:", sessionId);
+      // If ID exists, mark initialization as complete immediately
+      console.log("Existing session ID found.");
+      setIsSessionInitialized(true);
     }
   }, []);
+
+  if (!isSessionInitialized) {
+    // Show a loading screen while waiting for the API call to complete
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        Initializing Session...
+      </div>
+    );
+  }
 
   return (
     <Routes>
