@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import TeamFlag from '../components/TeamFlag.jsx';
+import Flag from '../components/Flag.jsx';
 
 const PlayoffSelector = () => {
   const navigate = useNavigate();
@@ -119,7 +119,7 @@ const PlayoffSelector = () => {
                     className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                   />
                   <div className="ml-3 flex items-center gap-2">
-                      <TeamFlag isoCode={team.iso} className="w-6 h-4 shadow-sm" />
+                      <Flag isoCode={team.iso} className="w-6 h-4 shadow-sm" />
                       <span className="font-medium text-gray-700">{team.name}</span>
                   </div>
                 </label>

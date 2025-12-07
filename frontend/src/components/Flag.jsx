@@ -36,7 +36,7 @@ const CODE_MAP = {
   BOL: 'bo', SUR: 'sr', IRQ: 'iq'
 };
 
-const TeamFlag = ({ isoCode, className = "w-6 h-4" }) => {
+const Flag = ({ isoCode, className = "w-6 h-4" }) => {
   if (!isoCode) return null;
 
   const iso2 = CODE_MAP[isoCode];
@@ -62,4 +62,4 @@ const TeamFlag = ({ isoCode, className = "w-6 h-4" }) => {
   );
 };
 
-export default TeamFlag;
+export default Flag;

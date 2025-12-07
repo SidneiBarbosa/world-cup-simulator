@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import TeamFlag from '../components/TeamFlag.jsx';
+import Flag from '../components/Flag.jsx';
 
 const GroupSimulator = () => {
   const [dbGroups, setDbGroups] = useState({});
@@ -184,7 +184,7 @@ const GroupSimulator = () => {
                                                 <span className={`w-5 h-5 flex items-center justify-center text-[10px] rounded-full ${i < 2 ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-500'}`}>
                                                     {i+1}
                                                 </span>
-                                                <TeamFlag isoCode={t.team.isoCode} className="w-5 h-3.5" />
+                                                <Flag isoCode={t.team.isoCode} className="w-5 h-3.5" />
                                                 <span className="truncate w-24">{t.team.name}</span>
                                             </td>
                                             <td className="text-center font-bold text-black">{t.points}</td>
@@ -209,7 +209,7 @@ const GroupSimulator = () => {
                                         <div className="flex items-center justify-between">
                                             {/* Team A (3 Letters) */}
                                             <div className="w-20 text-right font-bold text-gray-700 flex items-center justify-end gap-2">
-                                                {m.teamA} <TeamFlag isoCode={m.teamA} className="w-5 h-3.5" />
+                                                {m.teamA} <Flag isoCode={m.teamA} className="w-5 h-3.5" />
                                             </div>
                                             
                                             <div className="flex items-center gap-1">
@@ -222,7 +222,7 @@ const GroupSimulator = () => {
 
                                             {/* Team B (3 Letters) */}
                                             <div className="w-20 text-left font-bold text-gray-700 flex items-center justify-start gap-2">
-                                                <TeamFlag isoCode={m.teamB} className="w-5 h-3.5" /> {m.teamB}
+                                                <Flag isoCode={m.teamB} className="w-5 h-3.5" /> {m.teamB}
                                             </div>
                                         </div>
                                     </div>
