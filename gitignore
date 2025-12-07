@@ -1,0 +1,112 @@
+##############################################
+# ROOT (project-level)
+##############################################
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Environment files
+*.env
+*.env.local
+.env.*
+
+# Logs
+*.log
+logs/
+
+# Editor folders
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# Java crash logs
+hs_err_pid*
+replay_pid*
+
+################################################
+# BACKEND (Spring Boot + Maven)
+# Path: /backend
+################################################
+
+# Maven target directory
+backend/target/
+
+# Spring Boot JARs (avoid pushing build artifacts)
+backend/*.jar
+backend/*.war
+backend/*.zip
+
+# Maven metadata
+backend/pom.xml.tag
+backend/pom.xml.releaseBackup
+backend/pom.xml.versionsBackup
+backend/pom.xml.next
+backend/release.properties
+
+# Maven wrapper JAR
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# Compiled classes
+backend/**/*.class
+
+# IDE-specific backend
+backend/.project
+backend/.classpath
+backend/.settings/
+backend/out/
+backend/nbproject/
+backend/build/
+
+# ⚠️ Avoid committing JDKs or runtimes inside the backend directory
+backend/**/jdk*/
+backend/**/jre*/
+backend/**/oracleJdk*/
+backend/**/modules
+
+################################################
+# FRONTEND (React)
+# Path: /frontend
+################################################
+
+# Node dependencies
+frontend/node_modules/
+
+# React build output
+frontend/build/
+frontend/dist/
+
+# Temp caches
+frontend/.cache/
+frontend/.parcel-cache/
+
+# Debug logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Env files (React)
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/.env.local
+
+# Lock files (optional ignore — leave commented if you want deterministic installs)
+# frontend/package-lock.json
+# frontend/yarn.lock
+# frontend/pnpm-lock.yaml
+
+################################################
+# TESTING / TOOLING
+################################################
+
+coverage/
+*.coverage
+storybook-static/
+
+################################################
+# DOCKER
+################################################
+
+docker-compose.override.yml
