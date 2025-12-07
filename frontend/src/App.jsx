@@ -45,7 +45,7 @@ export default function App() {
       if (!id) {
         try {
           // Direct connection to backend port 8080
-          const res = await axios.get('http://localhost:8080/api/sim/start');
+          const res = await axios.get('https://world-cup-simulator-backend-latest-1.onrender.com/');
           localStorage.setItem('sim_session_id', res.data.sessionId);
           console.log("Session started:", res.data.sessionId);
         } catch (e) {
