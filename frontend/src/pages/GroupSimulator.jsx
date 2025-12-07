@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import TeamFlag from '../components/Teamflag.jsx';
+import TeamFlag from '../components/TeamFlag.jsx';
 
 const GroupSimulator = () => {
   const [dbGroups, setDbGroups] = useState({});
