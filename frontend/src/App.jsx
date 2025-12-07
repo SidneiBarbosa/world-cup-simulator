@@ -39,21 +39,23 @@ function Home() {
 export default function App() {
   
   // Initialize Session on Load
-  useEffect(() => {
-    const initSession = async () => {
-      let id = localStorage.getItem('sim_session_id');
-      if (!id) {
-        try {
-          // Direct connection to backend port 8080
-          const res = await axios.get('https://world-cup-simulator-backend-latest-1.onrender.com/');
-          localStorage.setItem('sim_session_id', res.data.sessionId);
-          console.log("Session started:", res.data.sessionId);
-        } catch (e) {
-          console.error("Backend offline? Is it running on port 8080?", e);
-        }
-      }
-    };
-    initSession();
+useEffect(() => {
+    let sessionId = localStorage.getItem('sim_session_id');
+
+    if (!sessionId) {
+      // Call the backend to get a new ID
+      axios.get('https://world-cup-simulator-iw8s.vercel.app/api/sim/start')
+        .then(response => {
+          const newId = response.data.sessionId;
+          localStorage.setItem('sim_session_id', newId);
+          console.log("New session started:", newId);
+        })
+        .catch(error => {
+          console.error("Failed to start session:", error);
+        });
+    } else {
+      console.log("Existing session ID found:", sessionId);
+    }
   }, []);
 
   return (
