@@ -24,12 +24,13 @@ function Home() {
         </Link>
 
         {/* Shortcut to Groups (Optional, if you want to skip playoffs later) */}
-        <Link 
-          to="/groups" 
-          className="bg-gray-600 text-white px-8 py-4 rounded-xl shadow-lg hover:bg-gray-700 font-bold text-lg transition-transform hover:scale-105"
-        >
-          Go to Groups
-        </Link>
+{/* <Link 
+    to="/groups" 
+    className="bg-gray-600 text-white px-8 py-4 rounded-xl shadow-lg hover:bg-gray-700 font-bold text-lg transition-transform hover:scale-105"
+  >
+    Go to Groups
+  </Link> 
+*/}
       </div>
     </div>
   );
