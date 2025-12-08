@@ -5,7 +5,7 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://wc-backend-api.onrender.com';
+axios.defaults.baseURL = 'https://world-cup-simulator-backend-latest-1.onrender.com';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
