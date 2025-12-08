@@ -5,6 +5,8 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios';
 
+axios.defaults.baseURL = 'https://wc-backend-api.onrender.com';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -12,5 +14,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </React.StrictMode>,
 )
-
-axios.defaults.baseURL = 'https://wc-backend-api.onrender.com';

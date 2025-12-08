@@ -37,37 +37,51 @@ function Home() {
 
 // 2. Main App Component (Routes & Logic)
 export default function App() {
-
   const [isSessionInitialized, setIsSessionInitialized] = useState(false);
-  
-  // Initialize Session on Load
-useEffect(() => {
+  const [connectionError, setConnectionError] = useState(null); // <--- New State
+
+  useEffect(() => {
     let sessionId = localStorage.getItem('sim_session_id');
 
     if (!sessionId) {
       console.log("Starting new session...");
       
-      // 1. Get new ID from backend
       axios.get('/api/sim/start')
         .then(response => {
           const newId = response.data.sessionId;
-          // 2. Save the ID
           localStorage.setItem('sim_session_id', newId);
           console.log("New session ID saved:", newId);
+          setIsSessionInitialized(true); // <--- Only set true on SUCCESS
         })
-        .finally(() => {
-          // 3. Set the state to true *after* the API call finishes (success or fail)
-          setIsSessionInitialized(true); 
+        .catch(error => {
+          console.error("Session Start Failed:", error);
+          // Show the error on screen so you know why it failed
+          setConnectionError("Could not connect to Backend. Please try again in a moment.");
         });
     } else {
-      // If ID exists, mark initialization as complete immediately
       console.log("Existing session ID found.");
       setIsSessionInitialized(true);
     }
   }, []);
 
+  // 1. SHOW ERROR SCREEN IF FAILED
+  if (connectionError) {
+      return (
+          <div className="flex flex-col items-center justify-center min-h-screen text-red-600 p-5 text-center">
+              <h1 className="text-2xl font-bold mb-4">Connection Error</h1>
+              <p>{connectionError}</p>
+              <button 
+                  onClick={() => window.location.reload()}
+                  className="mt-4 bg-blue-600 text-white px-6 py-2 rounded"
+              >
+                  Retry
+              </button>
+          </div>
+      );
+  }
+
+  // 2. SHOW LOADING SCREEN
   if (!isSessionInitialized) {
-    // Show a loading screen while waiting for the API call to complete
     return (
       <div className="flex items-center justify-center min-h-screen">
         Initializing Session...
